@@ -63,6 +63,16 @@ And application.css:
 *= require jquery.ui.datepicker
 ```
 
+And also you can customize your filter, like:
+
+```erb
+<%= filter_form_for @q do |f| %>
+  <%= f.filter_input :year, as: :select, collection: ((Date.today.year - 3)..(Date.today.year + 3)).to_a, predicate: :eq %>
+  <%= f.button :submit %>
+<% end %>
+```
+
+
 For more information about predicates visit [ransack](https://github.com/ernie/ransack).
 
 If you want to customize your form visit [simple_form](https://github.com/plataformatec/simple_form).

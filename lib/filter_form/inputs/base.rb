@@ -3,7 +3,7 @@ module FilterForm
     class Base
       include ActiveModel::Model
 
-      attr_accessor :attribute_name, :object
+      attr_accessor :attribute_name, :object, :predicate
 
       def options
         {
@@ -15,15 +15,15 @@ module FilterForm
     private
 
       def input_name
-        "q[#{ attribute_name }_#{ predicate }]"
+        "q[#{ attribute_name }_#{ predicate_name }]"
       end
 
       def input_value
         object_condition.values.first.value if object_condition
       end
 
-      def predicate
-        self.class.to_s.underscore.split('_').last
+      def predicate_name
+        predicate || self.class.to_s.underscore.split('_').last
       end
 
       def object_condition

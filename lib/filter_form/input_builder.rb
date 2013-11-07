@@ -1,25 +1,33 @@
 require 'filter_form/inputs/base'
-require 'filter_form/inputs/string'
 
-require 'filter_form/inputs/belongs_to_eq'
-require 'filter_form/inputs/string_cont'
-require 'filter_form/inputs/integer_eq'
-require 'filter_form/inputs/date_eq'
+require 'filter_form/inputs/select/base'
+require 'filter_form/inputs/select/belongs_to_eq'
+
+require 'filter_form/inputs/string/base'
+require 'filter_form/inputs/string/string_cont'
+require 'filter_form/inputs/string/integer_eq'
+require 'filter_form/inputs/string/date_eq'
 
 module FilterForm
   class InputBuilder
     include ActiveModel::Model
 
-    attr_accessor :attribute_name, :object
+    attr_accessor :attribute_name, :object, :options
 
     def build
-      "FilterForm::Inputs::#{ input_type.camelize }".constantize.new(attribute_name: attribute_name, object: object)
+      "FilterForm::Inputs::#{ input_type.camelize }".constantize.new attribute_name: attribute_name,
+                                                                     object:         object,
+                                                                     predicate:      options[:predicate]
     end
 
   private
 
     def input_type
-      "#{ type }_#{ predicate }"
+      if options[:as]
+        "#{ options[:as] }/base"
+      else
+        "#{ type }_#{ predicate }"
+      end
     end
 
     def predicate
@@ -34,13 +42,13 @@ module FilterForm
     def type
       case attribute_type
       when :string
-        :string
+        'string/string'
       when :integer
-        :integer
+        'string/integer'
       when :datetime, :date
-        :date
+        'string/date'
       when :belongs_to
-        :belongs_to
+        'select/belongs_to'
       end
     end
 

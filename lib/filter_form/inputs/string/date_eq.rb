@@ -1,6 +1,6 @@
 module FilterForm
   module Inputs
-    class DateEq < FilterForm::Inputs::String
+    class DateEq < FilterForm::Inputs::String::Base
       DATE_CLASS = 'filter_form_date'
 
     private
