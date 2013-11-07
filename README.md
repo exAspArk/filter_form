@@ -45,7 +45,7 @@ For `string` attribute (like name) it will automatically create a text input wit
 
 For `integer` type (age) it will set predicate `eq`.
 
-For association's `foreign key` (city_id) it will automatically build a select tag.
+For association's belongs_to `foreign key` (city_id) it will automatically build a select tag.
 
 For `date` and `datetime` (birthday) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
 
