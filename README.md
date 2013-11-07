@@ -41,13 +41,13 @@ In your view file:
 <% end %>
 ```
 
-For `string` attribute (like `name`) it will automatically create a text input with predicate `cont` (contains).
+For `string` attribute (like name) it will automatically create a text input with predicate `cont` (contains).
 
-For `integer` type (`age`) it will set predicate `eq`.
+For `integer` type (age) it will set predicate `eq`.
 
-For association's `foreign key` (`city_id`) it will automatically build a select tag.
+For association's `foreign key` (city_id) it will automatically build a select tag.
 
-For `date` and `datetime` (`birthday`) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
+For `date` and `datetime` (birthday) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
 
 If you want to use datepicker add to your application.js file:
 
