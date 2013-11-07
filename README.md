@@ -41,15 +41,12 @@ In your view file:
 <% end %>
 ```
 
-For `string` attribute (like name) it will automatically create a text input with predicate `cont` (contains).
+* For `string` attribute (like name) it will automatically create a text input with predicate `cont` (contains).
+* For `integer` type (age) it will set predicate `eq`.
+* For association `belongs_to` (city) it will automatically build a select tag with `eq`.
+* For `date` and `datetime` (birthday) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
 
-For `integer` type (age) it will set predicate `eq`.
-
-For association `belongs_to` (city) it will automatically build a select tag.
-
-For `date` and `datetime` (birthday) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
-
-If you want to use datepicker add to your application.js file:
+To use datepicker add to your application.js file:
 
 ```js
 //= require jquery
@@ -63,7 +60,7 @@ And application.css:
 *= require jquery.ui.datepicker
 ```
 
-And also you can customize your filter, like:
+Of course you can customize your filter, like:
 
 ```erb
 <%= filter_form_for @q do |f| %>
@@ -71,7 +68,6 @@ And also you can customize your filter, like:
   <%= f.button :submit %>
 <% end %>
 ```
-
 
 For more information about predicates visit [ransack](https://github.com/ernie/ransack).
 
