@@ -35,16 +35,25 @@ In your view file:
 <%= filter_form_for @q do |f| %>
   <%= f.filter_input :name %>
   <%= f.filter_input :age %>
+  <%= f.filter_input :city_id %>
   <%= f.filter_input :birthday %>
   <%= f.button :submit %>
 <% end %>
 ```
 
-If you want to use [datepicker](http://jqueryui.com/datepicker/) add to your application.js file:
+For `string` attribute (like `name`) it will automatically create a text input with predicate `cont` (contains).
+
+For `integer` type (`age`) it will set predicate `eq`.
+
+For association's `foreign key` (`city_id`) it will automatically build a select tag.
+
+For `date` and `datetime` (`birthday`) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
+
+If you want to use datepicker add to your application.js file:
 
 ```js
 //= require jquery
-//= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require filter_form
 ```
 
@@ -54,13 +63,9 @@ And application.css:
 *= require jquery.ui.datepicker
 ```
 
-For `name` (string attribute) it will automatically create text input with predicate `cont` (contains).
+For more information about predicates visit [ransack](https://github.com/ernie/ransack).
 
-For `age` (integer type) - predicate `eq`.
-
-For `birthday` (date and datetime) it will automatically add jQuery datepicker.
-
-For more information about predicates visit [ransack](https://github.com/ernie/ransack). If you want to customize your form visit [simple_form](https://github.com/plataformatec/simple_form).
+If you want to customize your form visit [simple_form](https://github.com/plataformatec/simple_form).
 
 ## Contributing
 
