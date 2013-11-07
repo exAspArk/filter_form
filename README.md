@@ -6,7 +6,9 @@ Build filter forms easily by using `ransack` and `simple_form`.
 
 Add this line to your application's Gemfile:
 
-    gem 'filter_form'
+```ruby
+gem 'filter_form'
+```
 
 And then execute:
 
@@ -22,14 +24,14 @@ In your contoller:
 
 ```ruby
 def index
-  @q = Person.search(params[:person])
+  @q = Person.search(params[:q])
   @people = @q.result
 end
 ```
 
 In your view file:
 
-```ruby
+```erb
 <%= filter_form_for @q do |f| %>
   <%= f.filter_input :name %>
   <%= f.filter_input :age %>
@@ -37,6 +39,28 @@ In your view file:
   <%= f.button :submit %>
 <% end %>
 ```
+
+If you want to use [datepicker](http://jqueryui.com/datepicker/) add to your application.js file:
+
+```js
+//= require jquery
+//= require jquery_ujs
+//= require filter_form
+```
+
+And application.css:
+
+```css
+*= require jquery.ui.datepicker
+```
+
+For `name` (string attribute) it will automatically create text input with predicate `cont` (contains).
+
+For `age` (integer type) - predicate `eq`.
+
+For `birthday` (date and datetime) it will automatically add jQuery datepicker.
+
+For more information about predicates visit [ransack](https://github.com/ernie/ransack). If you want to customize your form visit [simple_form](https://github.com/plataformatec/simple_form).
 
 ## Contributing
 

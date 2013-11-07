@@ -63,7 +63,7 @@ module FilterForm
     # ---------------------------------------------------------------------------
 
     def input_name
-      "#{ input_object_name }[#{ input_attribute_name }]"
+      "q[#{ input_attribute_name }]"
     end
 
     def type
@@ -91,10 +91,6 @@ module FilterForm
 
     def object_condition
       object.base.conditions.select { |c| c.a.first.name == attribute_name.to_s }.first
-    end
-
-    def input_object_name
-      object.klass.to_s.underscore
     end
 
     def input_attribute_name
