@@ -1,6 +1,8 @@
 module FilterForm
   module Inputs
-    class IntegerEq < FilterForm::Inputs::String::Base
+    module String
+      class IntegerEq < FilterForm::Inputs::String::Base
+      end
     end
   end
 end
