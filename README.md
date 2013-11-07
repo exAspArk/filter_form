@@ -35,7 +35,7 @@ In your view file:
 <%= filter_form_for @q do |f| %>
   <%= f.filter_input :name %>
   <%= f.filter_input :age %>
-  <%= f.filter_input :city_id %>
+  <%= f.filter_input :city %>
   <%= f.filter_input :birthday %>
   <%= f.button :submit %>
 <% end %>
@@ -45,7 +45,7 @@ For `string` attribute (like name) it will automatically create a text input wit
 
 For `integer` type (age) it will set predicate `eq`.
 
-For association's belongs_to `foreign key` (city_id) it will automatically build a select tag.
+For association `belongs_to` (city) it will automatically build a select tag.
 
 For `date` and `datetime` (birthday) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
 
