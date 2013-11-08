@@ -5,5 +5,7 @@ require 'filter_form/ransack/search'
 
 module FilterForm
   class Engine < ::Rails::Engine
+    require 'jquery-rails'
+    require 'select2-rails'
   end
 end

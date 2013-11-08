@@ -64,7 +64,7 @@ Of course you can customize your filter, like:
 <% end %>
 ```
 
-If you want to use jQuery [datepicker](http://jqueryui.com/datepicker/) for `date` and `datetime` automatically or [Select2](http://ivaynberg.github.io/select2/), just add to your application.js file:
+If you want to use jQuery [Datepicker](http://jqueryui.com/datepicker/) for `date` and `datetime` automatically or [Select2](http://ivaynberg.github.io/select2/), just add to your application.js file:
 
 ```js
 //= require filter_form
