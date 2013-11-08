@@ -33,20 +33,38 @@ In your view file:
 
 ```erb
 <%= filter_form_for @q do |f| %>
-  <%= f.filter_input :name %>
-  <%= f.filter_input :age %>
-  <%= f.filter_input :city %>
-  <%= f.filter_input :birthday %>
+  <%= f.filter_input :name      # string %>
+  <%= f.filter_input :age       # integer %>
+  <%= f.filter_input :city      # belongs_to %>
+  <%= f.filter_input :birthday  # date %>
+  <%= f.filter_input :amount    # money %>
   <%= f.button :submit %>
 <% end %>
 ```
 
-* For `string` attribute (like name) it will automatically create a text input with predicate `cont` (contains).
-* For `integer` type (age) it will set predicate `eq`.
-* For association `belongs_to` (city) it will automatically build a select tag with `eq`.
-* For `date` and `datetime` (birthday) it will automatically add jQuery [datepicker](http://jqueryui.com/datepicker/) and set predicate `eq`.
+### Available types
 
-To use datepicker add to your application.js file:
+     Mapping         | Database Column Type                            | Default predicate     | Generated HTML Element    |
+     --------------- |:------------------------------------------------|:----------------------|:--------------------------|
+     `string`        | `string`                                        | `cont`                | `input[type=text]`        |
+     `integer`       | `integer`                                       | `eq`                  | `input[type=text]`        |
+     `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
+     `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
+     `belongs_to`    | `belongs_to` association                        | `eq`                  | `select`                  |
+     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=text]` |
+
+### Customization
+
+Of course you can customize your filter, like:
+
+```erb
+<%= filter_form_for @q do |f| %>
+  <%= f.filter_input :year, as: :select, collection: ((Date.today.year - 3)..(Date.today.year + 3)).to_a, predicate: :eq %>
+  <%= f.button :submit %>
+<% end %>
+```
+
+If you want to use jQuery [datepicker](http://jqueryui.com/datepicker/) for `date` and `datetime` automatically, just add to your application.js file:
 
 ```js
 //= require jquery
@@ -60,16 +78,7 @@ And application.css:
 *= require jquery.ui.datepicker
 ```
 
-### Customization
-
-Of course you can customize your filter, like:
-
-```erb
-<%= filter_form_for @q do |f| %>
-  <%= f.filter_input :year, as: :select, collection: ((Date.today.year - 3)..(Date.today.year + 3)).to_a, predicate: :eq %>
-  <%= f.button :submit %>
-<% end %>
-```
+### Other sources
 
 For more information about predicates visit [ransack](https://github.com/ernie/ransack).
 

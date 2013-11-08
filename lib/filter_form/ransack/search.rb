@@ -16,9 +16,11 @@ module Ransack
 
       if money_attribute_name
         money_attribute_name = money_attribute_name.dup.gsub('_cents', '')
-        money_param_name = params.keys.select { |c| c.start_with?(money_attribute_name) }.first.dup
+        money_param_name = params.keys.select { |c| c.start_with?(money_attribute_name) }.first
 
-        params[money_param_name.gsub(money_attribute_name, "#{ money_attribute_name }_cents")] = params.delete(money_param_name).to_f * 100
+        if money_param_name
+          params[money_param_name.gsub(money_attribute_name, "#{ money_attribute_name }_cents")] = params.delete(money_param_name).to_f * 100
+        end
       end
     end
   end
