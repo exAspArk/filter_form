@@ -60,6 +60,8 @@ And application.css:
 *= require jquery.ui.datepicker
 ```
 
+### Customization
+
 Of course you can customize your filter, like:
 
 ```erb

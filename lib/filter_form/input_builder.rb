@@ -5,6 +5,7 @@ require 'filter_form/inputs/select/belongs_to'
 
 require 'filter_form/inputs/string/base'
 require 'filter_form/inputs/string/date'
+require 'filter_form/inputs/string/money'
 
 module FilterForm
   class InputBuilder
@@ -38,15 +39,21 @@ module FilterForm
     end
 
     def type
-      return custom_type if custom_type
+      custom_type ? map_type(custom_type) : map_type(attribute_type)
+    end
 
-      case attribute_type
-      when :string, :integer
-        :string
+    def map_type(_type)
+      case _type
+      when :integer
+        'string/base'
       when :datetime, :date
         'string/date'
+      when :money
+        'string/money'
       when :belongs_to
         'select/belongs_to'
+      else
+        _type
       end
     end
 
@@ -54,9 +61,15 @@ module FilterForm
       object.klass.reflections[attribute_name] && object.klass.reflections[attribute_name].belongs_to?
     end
 
+    def money?
+      object.klass.columns_hash["#{ attribute_name }_cents"].present?
+    end
+
     def attribute_type
       if association_belongs_to?
         :belongs_to
+      elsif money?
+        :money
       else
         object.klass.columns_hash[attribute_name.to_s].type
       end
