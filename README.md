@@ -33,11 +33,11 @@ In your view file:
 
 ```erb
 <%= filter_form_for @q do |f| %>
-  <%= f.filter_input :name      # string %>
-  <%= f.filter_input :age       # integer %>
+  <%= f.filter_input :name      # string     %>
+  <%= f.filter_input :age       # integer    %>
   <%= f.filter_input :city      # belongs_to %>
-  <%= f.filter_input :birthday  # date %>
-  <%= f.filter_input :amount    # money %>
+  <%= f.filter_input :birthday  # date       %>
+  <%= f.filter_input :amount    # money      %>
   <%= f.button :submit %>
 <% end %>
 ```
@@ -59,7 +59,7 @@ Of course you can customize your filter, like:
 
 ```erb
 <%= filter_form_for @q do |f| %>
-  <%= f.filter_input :year, as: :select, collection: ((Date.today.year - 3)..(Date.today.year + 3)).to_a, predicate: :eq %>
+  <%= f.filter_input :year, as: :select, collection: ((Date.today.year - 3)..(Date.today.year + 3)).to_a, predicate: :not_eq %>
   <%= f.button :submit %>
 <% end %>
 ```
