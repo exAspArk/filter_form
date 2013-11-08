@@ -15,15 +15,11 @@ module FilterForm
     private
 
       def input_name
-        "q[#{ attribute_name }_#{ predicate_name }]"
+        "q[#{ attribute_name }_#{ predicate }]"
       end
 
       def input_value
         object_condition.values.first.value if object_condition
-      end
-
-      def predicate_name
-        predicate || self.class.to_s.underscore.split('_').last
       end
 
       def object_condition

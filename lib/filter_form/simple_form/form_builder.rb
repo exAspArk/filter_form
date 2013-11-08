@@ -3,9 +3,12 @@ require 'filter_form/input_builder'
 module SimpleForm
   class FormBuilder < ActionView::Helpers::FormBuilder
     def filter_input(attribute_name, options = {}, &block)
-      filter_form_input = FilterForm::InputBuilder.new(attribute_name: attribute_name, options: options, object: object).build
+      input_builder = FilterForm::InputBuilder.new attribute_name:   attribute_name,
+                                                   object:           object,
+                                                   custom_type:      options[:as],
+                                                   custom_predicate: options[:predicate]
 
-      options.reverse_merge!(filter_form_input.options)
+      options.reverse_merge!(input_builder.build.options)
 
       input(attribute_name, options, &block)
     end
