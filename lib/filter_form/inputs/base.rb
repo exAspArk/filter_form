@@ -3,16 +3,32 @@ module FilterForm
     class Base
       include ActiveModel::Model
 
+      INPUT_CLASS = ''
+
       attr_accessor :attribute_name, :object, :predicate
 
       def options
+        result = default_options.merge(additional_options)
+        result[:input_html].merge!(additional_input_options)
+        result
+      end
+
+    private
+
+      def default_options
         {
           required:   false,
           input_html: { name: input_name }
         }
       end
 
-    private
+      def additional_options
+        {}
+      end
+
+      def additional_input_options
+        { class: self.class::INPUT_CLASS }
+      end
 
       def input_name
         "q[#{ attribute_name }_#{ predicate }]"

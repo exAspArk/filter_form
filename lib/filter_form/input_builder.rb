@@ -2,6 +2,7 @@ require 'filter_form/inputs/base'
 
 require 'filter_form/inputs/select/base'
 require 'filter_form/inputs/select/belongs_to'
+require 'filter_form/inputs/select/select2'
 
 require 'filter_form/inputs/string/base'
 require 'filter_form/inputs/string/date'
@@ -30,7 +31,7 @@ module FilterForm
     def predicate
       return custom_predicate if custom_predicate
 
-      case attribute_type
+      case type
       when :string
         :cont
       else
@@ -52,6 +53,8 @@ module FilterForm
         'string/money'
       when :belongs_to
         'select/belongs_to'
+      when :select2
+        'select/select2'
       else
         _type
       end

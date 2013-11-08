@@ -47,6 +47,7 @@ In your view file:
      Mapping         | Database Column Type                            | Default predicate     | Generated HTML Element    |
      --------------- |:------------------------------------------------|:----------------------|:--------------------------|
      `string`        | `string`                                        | `cont`                | `input[type=text]`        |
+     `select2`       | `string`                                        | `eq`                  | `select`                  |
      `integer`       | `integer`                                       | `eq`                  | `input[type=text]`        |
      `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
      `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
@@ -59,7 +60,8 @@ Of course you can customize your filter, like:
 
 ```erb
 <%= filter_form_for @q do |f| %>
-  <%= f.filter_input :year, as: :select, collection: ((Date.today.year - 3)..(Date.today.year + 3)).to_a, predicate: :not_eq %>
+  <%= f.filter_input :title, as: :select2 %>
+  <%= f.filter_input :year, as: :select, collection: (2000..2013).to_a, predicate: :not_eq %>
   <%= f.button :submit %>
 <% end %>
 ```

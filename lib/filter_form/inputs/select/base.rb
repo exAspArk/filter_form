@@ -2,11 +2,7 @@ module FilterForm
   module Inputs
     module Select
       class Base < FilterForm::Inputs::Base
-        def options
-          super.merge(additional_options)
-        end
-
-      private
+        private
 
         def additional_options
           {
@@ -18,7 +14,7 @@ module FilterForm
         end
 
         def collection
-          []
+          object.klass.uniq.pluck(attribute_name)
         end
       end
     end

@@ -2,18 +2,14 @@ module FilterForm
   module Inputs
     module String
       class Base < FilterForm::Inputs::Base
-        def options
-          result = super.merge(as: :string)
-          result[:input_html].merge!(additional_input_options)
-          result
+        private
+
+        def additional_options
+          { as: :string }
         end
 
-      private
-
         def additional_input_options
-          {
-            value: input_value
-          }
+          super.merge(value: input_value)
         end
       end
     end
