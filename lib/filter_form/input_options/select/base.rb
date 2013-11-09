@@ -1,7 +1,7 @@
 module FilterForm
   module InputOptions
     module Select
-      class Base < FilterForm::Inputs::Base
+      class Base < FilterForm::InputOptions::Base
         private
 
         def additional_options

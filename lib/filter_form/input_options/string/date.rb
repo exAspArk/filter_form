@@ -1,7 +1,7 @@
 module FilterForm
   module InputOptions
     module String
-      class Date < FilterForm::Inputs::String::Base
+      class Date < FilterForm::InputOptions::String::Base
         private
 
         def input_class

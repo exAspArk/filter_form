@@ -6,7 +6,7 @@ module SimpleForm
       input_options_builder = FilterForm::InputOptionsBuilder.new attribute_name:   attribute_name,
                                                                   object:           object,
                                                                   custom_type:      options.delete(:as),
-                                                                  custom_predicate: options[:predicate]
+                                                                  custom_predicate: options.delete(:predicate)
 
       filter_form_input_options = input_options_builder.build(options)
 

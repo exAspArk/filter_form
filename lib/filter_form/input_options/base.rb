@@ -6,8 +6,6 @@ module FilterForm
       attr_accessor :attribute_name, :object, :predicate, :options
 
       def simple_form_options
-        options[:input_html] ||= {}
-        options[:input_html].reverse_merge!(additional_input_options)
         default_options.merge(additional_options).merge(options)
       end
 
@@ -16,7 +14,7 @@ module FilterForm
       def default_options
         {
           required:   false,
-          input_html: { name: input_name }
+          input_html: { name: input_name }.merge(additional_input_options).merge(options.delete(:input_html) || {})
         }
       end
 
@@ -25,11 +23,11 @@ module FilterForm
       end
 
       def additional_input_options
-        { class: input_class }
+        input_class ? { class: input_class } : {}
       end
 
       def input_class
-        ''
+        nil
       end
 
       def input_name

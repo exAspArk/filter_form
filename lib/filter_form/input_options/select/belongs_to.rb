@@ -1,7 +1,7 @@
 module FilterForm
   module InputOptions
     module Select
-      class BelongsTo < FilterForm::Inputs::Select::Base
+      class BelongsTo < FilterForm::InputOptions::Select::Base
         private
 
         def object_condition
