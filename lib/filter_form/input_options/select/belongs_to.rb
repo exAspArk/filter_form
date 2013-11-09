@@ -1,5 +1,5 @@
 module FilterForm
-  module Inputs
+  module InputOptions
     module Select
       class BelongsTo < FilterForm::Inputs::Select::Base
         private
@@ -9,7 +9,7 @@ module FilterForm
         end
 
         def collection
-          attribute_name.to_s.camelize.constantize.all
+          options[:collection] || attribute_name.to_s.camelize.constantize.all
         end
 
         def input_name

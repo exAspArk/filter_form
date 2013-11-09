@@ -1,16 +1,14 @@
 module FilterForm
-  module Inputs
+  module InputOptions
     class Base
       include ActiveModel::Model
 
-      INPUT_CLASS = ''
+      attr_accessor :attribute_name, :object, :predicate, :options
 
-      attr_accessor :attribute_name, :object, :predicate
-
-      def options
-        result = default_options.merge(additional_options)
-        result[:input_html].merge!(additional_input_options)
-        result
+      def simple_form_options
+        options[:input_html] ||= {}
+        options[:input_html].reverse_merge!(additional_input_options)
+        default_options.merge(additional_options).merge(options)
       end
 
     private
@@ -27,7 +25,11 @@ module FilterForm
       end
 
       def additional_input_options
-        { class: self.class::INPUT_CLASS }
+        { class: input_class }
+      end
+
+      def input_class
+        ''
       end
 
       def input_name

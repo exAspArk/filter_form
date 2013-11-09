@@ -1,31 +1,34 @@
-require 'filter_form/inputs/base'
+require 'filter_form/input_options/base'
 
-require 'filter_form/inputs/select/base'
-require 'filter_form/inputs/select/belongs_to'
-require 'filter_form/inputs/select/select2'
+require 'filter_form/input_options/select/base'
+require 'filter_form/input_options/select/belongs_to'
 
-require 'filter_form/inputs/string/base'
-require 'filter_form/inputs/string/date'
-require 'filter_form/inputs/string/money'
+require 'filter_form/input_options/string/base'
+require 'filter_form/input_options/string/date'
+require 'filter_form/input_options/string/money'
 
 module FilterForm
-  class InputBuilder
+  class InputOptionsBuilder
     include ActiveModel::Model
 
     attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
 
-    def build
-      input_class.new(attribute_name: attribute_name, object: object, predicate: predicate)
+    def build(options)
+      input_options_class.new(attribute_name: attribute_name, object: object, predicate: predicate, options: options)
     end
 
   private
 
-    def input_class
-      result = "FilterForm::Inputs::#{ "#{ type }".camelize }".constantize
+    def input_options_class
+      result = constantize_input_options_class("#{ type }".camelize)
       raise NameError if result.class == Module
       result
     rescue NameError
-      "FilterForm::Inputs::#{ "#{ type }/base".camelize }".constantize
+      constantize_input_options_class("#{ type }/base".camelize)
+    end
+
+    def constantize_input_options_class(class_name)
+      "FilterForm::InputOptions::#{ class_name }".constantize
     end
 
     def predicate

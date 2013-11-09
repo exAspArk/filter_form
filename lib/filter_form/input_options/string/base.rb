@@ -1,5 +1,5 @@
 module FilterForm
-  module Inputs
+  module InputOptions
     module String
       class Base < FilterForm::Inputs::Base
         private

@@ -1,16 +1,16 @@
-require 'filter_form/input_builder'
+require 'filter_form/input_options_builder'
 
 module SimpleForm
   class FormBuilder < ActionView::Helpers::FormBuilder
     def filter_input(attribute_name, options = {}, &block)
-      input_builder = FilterForm::InputBuilder.new attribute_name:   attribute_name,
-                                                   object:           object,
-                                                   custom_type:      options.delete(:as),
-                                                   custom_predicate: options[:predicate]
+      input_options_builder = FilterForm::InputOptionsBuilder.new attribute_name:   attribute_name,
+                                                                  object:           object,
+                                                                  custom_type:      options.delete(:as),
+                                                                  custom_predicate: options[:predicate]
 
-      options.reverse_merge!(input_builder.build.options)
+      filter_form_input_options = input_options_builder.build(options)
 
-      input(attribute_name, options, &block)
+      input(attribute_name, filter_form_input_options.simple_form_options, &block)
     end
   end
 end

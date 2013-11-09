@@ -1,5 +1,5 @@
 module FilterForm
-  module Inputs
+  module InputOptions
     module Select
       class Base < FilterForm::Inputs::Base
         private
@@ -14,7 +14,11 @@ module FilterForm
         end
 
         def collection
-          object.klass.uniq.pluck(attribute_name)
+          options[:collection] || object.klass.uniq.pluck(attribute_name)
+        end
+
+        def input_class
+          options[:in] == :select2 ? 'filter_form_select2' : super
         end
       end
     end
