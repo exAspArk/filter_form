@@ -14,7 +14,7 @@ module FilterForm
     attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
 
     def build(options)
-      input_options_class.new(attribute_name: attribute_name, object: object, predicate: predicate, options: options)
+      input_options_class.new(attribute_name: attribute_name, object: object, predicate: predicate, options: options).filter_form_input_options
     end
 
   private
@@ -63,7 +63,7 @@ module FilterForm
       end
     end
 
-    def association_belongs_to?
+    def belongs_to?
       object.klass.reflections[attribute_name] && object.klass.reflections[attribute_name].belongs_to?
     end
 
@@ -72,7 +72,7 @@ module FilterForm
     end
 
     def attribute_type
-      if association_belongs_to?
+      if belongs_to?
         :belongs_to
       elsif money?
         :money

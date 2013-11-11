@@ -8,9 +8,7 @@ module SimpleForm
                                                                   custom_type:      options.delete(:as),
                                                                   custom_predicate: options.delete(:predicate)
 
-      filter_form_input_options = input_options_builder.build(options)
-
-      input(attribute_name, filter_form_input_options.simple_form_options, &block)
+      input(attribute_name, input_options_builder.build(options), &block)
     end
   end
 end
