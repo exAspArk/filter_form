@@ -1,7 +1,3 @@
-#= require jquery
-#= require jquery.ui.datepicker
-#= require select2
-
 $ ->
   $('.filter_form_select2').select2()
 

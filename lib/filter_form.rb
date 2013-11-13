@@ -7,7 +7,5 @@ module FilterForm
   class Engine < ::Rails::Engine
     require 'simple_form'
     require 'ransack'
-    require 'jquery-rails'
-    require 'select2-rails'
   end
 end
