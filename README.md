@@ -71,6 +71,8 @@ If you want to use jQuery [Datepicker](http://jqueryui.com/datepicker/) for `dat
 //= require jquery
 //= require jquery.ui.datepicker
 //= require select2
+
+//= require filter_form
 ```
 
 And application.css:
