@@ -59,7 +59,8 @@ Of course you can customize your filter, like:
 
 ```erb
 <%= filter_form_for @q do |f| %>
-  <%= f.filter_input :title, as: :select, in: :select2 %>
+  <%= f.filter_input :id, with: :predicate_selector    # will add select to change predicates in your form %>
+  <%= f.filter_input :title, as: :select, in: :select2 # wraps select in select2 %>
   <%= f.filter_input :year, as: :select, collection: (2000..2013).to_a, predicate: :not_eq %>
   <%= f.button :submit %>
 <% end %>
