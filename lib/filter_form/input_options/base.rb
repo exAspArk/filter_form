@@ -23,7 +23,17 @@ module FilterForm
       end
 
       def additional_input_options
-        { class: input_class, with: options.delete(:with) }
+        result = { data: {} }
+
+        result[:class]                    = input_class       if input_class
+        result[:data][:with]              = options[:with]    if options[:with]
+        result[:data][:current_predicate] = current_predicate if current_predicate
+
+        result
+      end
+
+      def current_predicate
+        object.base.conditions.first.predicate.name if object.base.conditions.any?
       end
 
       def input_class

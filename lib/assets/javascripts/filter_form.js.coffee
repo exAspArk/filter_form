@@ -16,6 +16,7 @@ class PredicateSelector
   constructor: (@element) ->
     @insert_selector()
     @set_onchange_listener()
+    @set_current_predicate()
 
   insert_selector: ->
     @_select = $("<select for='#{ $(@element).attr('id') }' class='#{ @constructor.class_name() }'><select>")
@@ -37,10 +38,18 @@ class PredicateSelector
     for predicate in @_predicates
       return predicate if predicate.name is name
 
+  set_current_predicate: ->
+    if @current_predicate()
+      $(@_select).val(@current_predicate().name).change()
+
+  current_predicate: ->
+    for predicate in @_predicates
+      return predicate if predicate.value is $(@element).data('current-predicate')
+
 ###############################################################################
 
 $ ->
-  for element in $("[#{ PredicateSelector.element_for_attribute().name }='#{ PredicateSelector.element_for_attribute().value }']")
+  for element in $("[data-#{ PredicateSelector.element_for_attribute().name }='#{ PredicateSelector.element_for_attribute().value }']")
     new PredicateSelector(element)
 
   $('.filter_form_select2').select2()

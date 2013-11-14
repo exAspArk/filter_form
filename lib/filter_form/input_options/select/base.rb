@@ -18,7 +18,7 @@ module FilterForm
         end
 
         def input_class
-          options.delete(:in) == :select2 ? 'filter_form_select2' : super
+          options[:in] == :select2 ? 'filter_form_select2' : super
         end
       end
     end
