@@ -23,7 +23,7 @@ module FilterForm
       end
 
       def additional_input_options
-        input_class ? { class: input_class } : {}
+        { class: input_class, with: options.delete(:with) }
       end
 
       def input_class
