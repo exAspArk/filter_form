@@ -80,6 +80,8 @@ And application.css:
 ```css
 *= require jquery.ui.datepicker
 *= require select2
+
+*= require filter_form
 ```
 
 ### Other sources

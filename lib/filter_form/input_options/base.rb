@@ -14,7 +14,7 @@ module FilterForm
       def default_options
         {
           required:   false,
-          input_html: { name: input_name }.merge(additional_input_options).merge(options.delete(:input_html) || {})
+          input_html: additional_input_options.merge(options.delete(:input_html) || {})
         }
       end
 
@@ -23,7 +23,7 @@ module FilterForm
       end
 
       def additional_input_options
-        result = { data: {} }
+        result = { name: input_name, data: {} }
 
         result[:class]                    = input_class       if input_class
         result[:data][:with]              = options[:with]    if options[:with]
