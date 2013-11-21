@@ -25,7 +25,14 @@ module FilterForm
       def additional_input_options
         result = { name: input_name, data: {} }
 
-        result[:class]                     = input_class                  if input_class
+        if input_class
+          if options[:input_html]
+            result[:class] = (options[:input_html].delete(:class) || '') << " #{ input_class }"
+          else
+            result[:class] = input_class
+          end
+        end
+
         result[:data][:predicate_selector] = options[:predicate_selector] if options[:predicate_selector]
         result[:data][:current_predicate]  = current_predicate            if current_predicate
 
