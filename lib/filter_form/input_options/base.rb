@@ -33,7 +33,11 @@ module FilterForm
       end
 
       def current_predicate
-        object.base.conditions.first.predicate.name if object.base.conditions.any?
+        if object.base.conditions.any?
+          object.base.conditions.first.predicate.name
+        elsif options[:predicate_selector]
+          predicate
+        end
       end
 
       def input_class
