@@ -36,6 +36,7 @@ In your view file:
   <%= f.filter_input :name      # string     %>
   <%= f.filter_input :age       # integer    %>
   <%= f.filter_input :city      # belongs_to %>
+  <%= f.filter_input :parents   # collection %>
   <%= f.filter_input :birthday  # date       %>
   <%= f.filter_input :amount    # money      %>
   <%= f.button :submit %>
@@ -51,6 +52,7 @@ In your view file:
      `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
      `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
      `belongs_to`    | `belongs_to` association                        | `eq`                  | `select`                  |
+     `collection`    | `has_many` or `has_and_belongs_to_many` association | `eq`              | `select`                  |
      `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=text]` |
 
 ### Customization
