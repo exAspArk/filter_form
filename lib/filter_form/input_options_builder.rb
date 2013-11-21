@@ -49,7 +49,7 @@ module FilterForm
 
     def map_type(_type)
       case _type
-      when :integer
+      when :integer, :text
         'string/base'
       when :datetime, :date
         'string/date'

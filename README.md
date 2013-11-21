@@ -48,6 +48,7 @@ In your view file:
      Mapping         | Database Column Type                            | Default predicate     | Generated HTML Element    |
      --------------- |:------------------------------------------------|:----------------------|:--------------------------|
      `string`        | `string`                                        | `cont`                | `input[type=text]`        |
+     `text`          | `text`                                          | `cont`                | `input[type=text]`        |
      `integer`       | `integer`                                       | `eq`                  | `input[type=text]`        |
      `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
      `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
