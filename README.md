@@ -55,16 +55,7 @@ In your view file:
 
 ### Customization
 
-Of course you can customize your filter, like:
-
-```erb
-<%= filter_form_for @q do |f| %>
-  <%= f.filter_input :id, with: :predicate_selector    # will add select to change predicates in your form %>
-  <%= f.filter_input :title, as: :select, in: :select2 # wraps select in select2 %>
-  <%= f.filter_input :year, as: :select, collection: (2000..2013).to_a, predicate: :not_eq %>
-  <%= f.button :submit %>
-<% end %>
-```
+#### Assets
 
 If you want to use jQuery [Datepicker](http://jqueryui.com/datepicker/) for `date` and `datetime` automatically or [Select2](http://ivaynberg.github.io/select2/), add to your application.js file:
 
@@ -83,6 +74,37 @@ And application.css:
 *= require select2
 
 *= require filter_form
+```
+
+#### Custom predicate
+
+```erb
+<%= filter_form_for @q do |f| %>
+  <%= f.filter_input :year, as: :select, collection: (2000..2013).to_a, predicate: :not_eq %>
+  <%= f.button :submit %>
+<% end %>
+```
+
+#### Select2
+
+You can wrap your select in `select2`:
+
+```erb
+<%= filter_form_for @q do |f| %>
+  <%= f.filter_input :title, as: :select, in: :select2 %>
+  <%= f.button :submit %>
+<% end %>
+```
+
+#### Predicate selector
+
+You can show predicate selector:
+
+```erb
+<%= filter_form_for @q do |f| %>
+  <%= f.filter_input :id, predicate_selector: [['=', 'eq'], ['>', 'gt'], ['<', 'lt']] %>
+  <%= f.button :submit %>
+<% end %>
 ```
 
 ### Other sources

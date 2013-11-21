@@ -25,9 +25,9 @@ module FilterForm
       def additional_input_options
         result = { name: input_name, data: {} }
 
-        result[:class]                    = input_class       if input_class
-        result[:data][:with]              = options[:with]    if options[:with]
-        result[:data][:current_predicate] = current_predicate if current_predicate
+        result[:class]                     = input_class                  if input_class
+        result[:data][:predicate_selector] = options[:predicate_selector] if options[:predicate_selector]
+        result[:data][:current_predicate]  = current_predicate            if current_predicate
 
         result
       end
