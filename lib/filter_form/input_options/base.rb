@@ -60,10 +60,12 @@ module FilterForm
       end
 
       def object_condition
-        object.base.conditions.select do |condition|
-          condition.a.first.name == input_attribute_name.to_s &&
-          condition.predicate.name == predicate.to_s
-        end.first
+        result = object.base.conditions.select { |condition| condition.a.first.name == input_attribute_name.to_s }
+        if result.size > 1
+          result.select { |condition| condition.predicate.name == predicate.to_s }.first
+        else
+          result.first
+        end
       end
 
       def input_attribute_name
