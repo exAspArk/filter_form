@@ -10,8 +10,8 @@ module FilterForm
           end
         end
 
-        def object_condition
-          object.base.conditions.select { |c| c.a.first.name == "#{ attribute_name }_cents" }.first
+        def input_attribute_name
+          "#{ attribute_name }_cents"
         end
       end
     end
