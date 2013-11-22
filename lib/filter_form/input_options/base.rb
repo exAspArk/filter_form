@@ -40,8 +40,8 @@ module FilterForm
       end
 
       def current_predicate
-        if object.base.conditions.any?
-          object.base.conditions.first.predicate.name
+        if object_condition
+          object_condition.predicate.name
         elsif options[:predicate_selector]
           predicate
         end
