@@ -1,7 +1,7 @@
 module FilterForm
   module InputOptions
-    module String
-      class Money < FilterForm::InputOptions::String::Base
+    module Number
+      class Money < FilterForm::InputOptions::Number::Base
         private
 
         def input_value

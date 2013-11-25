@@ -6,7 +6,9 @@ require 'filter_form/input_options/select/collection'
 
 require 'filter_form/input_options/string/base'
 require 'filter_form/input_options/string/date'
-require 'filter_form/input_options/string/money'
+
+require 'filter_form/input_options/number/base'
+require 'filter_form/input_options/number/money'
 
 require 'filter_form/input_options/checkbox/base'
 
@@ -53,12 +55,14 @@ module FilterForm
 
     def map_type(_type)
       case _type
-      when :integer, :text
+      when :text
         'string/base'
       when :datetime, :date
         'string/date'
+      when :integer, :float, :decimal
+        'number/base'
       when :money
-        'string/money'
+        'number/money'
       when :belongs_to
         'select/belongs_to'
       when :collection

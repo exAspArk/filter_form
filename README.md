@@ -50,12 +50,14 @@ In your view file:
      --------------- |:------------------------------------------------|:----------------------|:--------------------------|
      `string`        | `string`                                        | `cont`                | `input[type=text]`        |
      `text`          | `text`                                          | `cont`                | `input[type=text]`        |
-     `integer`       | `integer`                                       | `eq`                  | `input[type=text]`        |
+     `integer`       | `integer`                                       | `eq`                  | `input[type=number]`      |
+     `float`         | `float`                                         | `eq`                  | `input[type=number]`      |
+     `decimal`       | `decimal`                                       | `eq`                  | `input[type=number]`      |
+     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=number]` |
      `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
      `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
      `belongs_to`    | `belongs_to` association                        | `eq`                  | `select`                  |
      `collection`    | `has_many` or `has_and_belongs_to_many` association | `eq`              | `select`                  |
-     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=text]` |
      `boolean`       | `boolean`                                       | `true`                | `input[type=checkbox]`    |
 
 ### Customization

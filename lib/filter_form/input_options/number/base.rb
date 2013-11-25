@@ -1,18 +1,17 @@
 module FilterForm
   module InputOptions
-    module Checkbox
+    module Number
       class Base < FilterForm::InputOptions::Base
         private
 
         def additional_options
-          { as: :boolean }
+          { as: :integer }
         end
 
         def additional_input_options
-          super.merge(checked: !!input_value)
+          super.merge(value: input_value)
         end
       end
     end
   end
 end
-
