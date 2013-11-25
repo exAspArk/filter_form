@@ -8,6 +8,8 @@ require 'filter_form/input_options/string/base'
 require 'filter_form/input_options/string/date'
 require 'filter_form/input_options/string/money'
 
+require 'filter_form/input_options/checkbox/base'
+
 module FilterForm
   class InputOptionsBuilder
     include ActiveModel::Model
@@ -38,6 +40,8 @@ module FilterForm
       case type
       when :string
         :cont
+      when :boolean
+        :true
       else
         :eq
       end
@@ -61,6 +65,8 @@ module FilterForm
         'select/collection'
       when :select2
         'select/select2'
+      when :boolean
+        'checkbox/base'
       else
         _type
       end

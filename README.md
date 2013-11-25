@@ -39,6 +39,7 @@ In your view file:
   <%= f.filter_input :parents   # collection %>
   <%= f.filter_input :birthday  # date       %>
   <%= f.filter_input :amount    # money      %>
+  <%= f.filter_input :married   # boolean    %>
   <%= f.button :submit %>
 <% end %>
 ```
@@ -55,6 +56,7 @@ In your view file:
      `belongs_to`    | `belongs_to` association                        | `eq`                  | `select`                  |
      `collection`    | `has_many` or `has_and_belongs_to_many` association | `eq`              | `select`                  |
      `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=text]` |
+     `boolean`       | `boolean`                                       | `true`                | `input[type=checkbox]`    |
 
 ### Customization
 
