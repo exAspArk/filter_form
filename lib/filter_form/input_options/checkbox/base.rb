@@ -2,6 +2,8 @@ module FilterForm
   module InputOptions
     module Checkbox
       class Base < FilterForm::InputOptions::Base
+        DEFAULT_PREDICATE = :true
+
         private
 
         def additional_options

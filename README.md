@@ -33,13 +33,13 @@ In your view file:
 
 ```erb
 <%= filter_form_for @q do |f| %>
+  <%= f.filter_input :married   # boolean    %>
   <%= f.filter_input :name      # string     %>
   <%= f.filter_input :age       # integer    %>
+  <%= f.filter_input :birthday  # date       %>
   <%= f.filter_input :city      # belongs_to %>
   <%= f.filter_input :parents   # has_many   %>
-  <%= f.filter_input :birthday  # date       %>
   <%= f.filter_input :amount    # money      %>
-  <%= f.filter_input :married   # boolean    %>
   <%= f.button :submit %>
 <% end %>
 ```

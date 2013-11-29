@@ -2,6 +2,8 @@ module FilterForm
   module InputOptions
     module String
       class Base < FilterForm::InputOptions::Base
+        DEFAULT_PREDICATE = :cont
+
         private
 
         def additional_options

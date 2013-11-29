@@ -17,7 +17,7 @@ module FilterForm
     attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
 
     def build(options)
-      input_options_class.new(attribute_name: attribute_name, object: object, predicate: predicate, options: options).simple_form_options
+      input_options_class.new(attribute_name: attribute_name, object: object, custom_predicate: custom_predicate, options: options).simple_form_options
     end
 
   private
@@ -32,19 +32,6 @@ module FilterForm
 
     def constantize_input_options_class(class_name)
       "FilterForm::InputOptions::#{ class_name }".constantize
-    end
-
-    def predicate
-      return custom_predicate if custom_predicate
-
-      case type
-      when :string
-        :cont
-      when :boolean
-        :true
-      else
-        :eq
-      end
     end
 
     def type
