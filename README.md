@@ -36,7 +36,7 @@ In your view file:
   <%= f.filter_input :name      # string     %>
   <%= f.filter_input :age       # integer    %>
   <%= f.filter_input :city      # belongs_to %>
-  <%= f.filter_input :parents   # collection %>
+  <%= f.filter_input :parents   # has_many   %>
   <%= f.filter_input :birthday  # date       %>
   <%= f.filter_input :amount    # money      %>
   <%= f.filter_input :married   # boolean    %>
@@ -48,18 +48,16 @@ In your view file:
 
      Mapping         | Database Column Type                            | Default predicate     | Generated HTML Element    |
      --------------- |:------------------------------------------------|:----------------------|:--------------------------|
-     `boolean`       | `boolean`                                       | `true`                | `input[type=checkbox]`    |
-     `string`        | `string`                                        | `cont`                | `input[type=text]`        |
-     `text`          | `text`                                          | `cont`                | `input[type=text]`        |
-     `integer`       | `integer`                                       | `eq`                  | `input[type=number]`      |
-     `float`         | `float`                                         | `eq`                  | `input[type=number]`      |
-     `decimal`       | `decimal`                                       | `eq`                  | `input[type=number]`      |
-     `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
-     `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
-     `select`        | `select`                                        | `eq`                  | `select`                  |
-     `belongs_to`    | `belongs_to` association                        | `eq`                  | `select`                  |
-     `collection`    | `has_many` or `has_and_belongs_to_many` association | `eq`              | `select`                  |
-     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=number]` |
+     `boolean`       | `boolean`                                       | `true`                | `input[type="checkbox"]`  |
+     `string`        | `string`                                        | `cont`                | `input[type="text"]`      |
+     `text`          | `text`                                          | `cont`                | `input[type="text"]`      |
+     `integer`       | `integer`                                       | `eq`                  | `input[type="number"]`    |
+     `float`         | `float`                                         | `eq`                  | `input[type="number"]`    |
+     `decimal`       | `decimal`                                       | `eq`                  | `input[type="number"]`    |
+     `date`          | `date`                                          | `eq`                  | `input[type="text"]`      |
+     `datetime`      | `datetime`                                      | `eq`                  | `input[type="text"]`      |
+     `select`        | `belongs_to`/`has_many`/`has_and_belongs_to_many` associations | `eq`   | `select`                  |
+     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type="number"]` |
 
 ### Customization
 

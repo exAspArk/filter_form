@@ -1,8 +1,6 @@
 require 'filter_form/input_options/base'
 
 require 'filter_form/input_options/select/base'
-require 'filter_form/input_options/select/belongs_to'
-require 'filter_form/input_options/select/collection'
 
 require 'filter_form/input_options/string/base'
 require 'filter_form/input_options/string/date'
@@ -63,10 +61,6 @@ module FilterForm
         'number/base'
       when :money
         'number/money'
-      when :belongs_to
-        'select/belongs_to'
-      when :collection
-        'select/collection'
       when :select2
         'select/select2'
       when :boolean
@@ -76,12 +70,8 @@ module FilterForm
       end
     end
 
-    def belongs_to?
-      object.klass.reflections[attribute_name] && object.klass.reflections[attribute_name].belongs_to?
-    end
-
-    def collection?
-      object.klass.reflections[attribute_name] && object.klass.reflections[attribute_name].collection?
+    def association?
+      !!object.klass.reflections[attribute_name]
     end
 
     def money?
@@ -89,10 +79,8 @@ module FilterForm
     end
 
     def attribute_type
-      if belongs_to?
-        :belongs_to
-      elsif collection?
-        :collection
+      if association?
+        :select
       elsif money?
         :money
       else
