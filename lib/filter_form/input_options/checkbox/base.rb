@@ -2,19 +2,19 @@ module FilterForm
   module InputOptions
     module Checkbox
       class Base < FilterForm::InputOptions::Base
-        DEFAULT_PREDICATE = :true
+        include FilterForm::InputOptions::Shared::WithAssociations
+
+        DEFAULT_PREDICATE = :in
 
         private
 
         def additional_options
-          { as: :boolean }
-        end
-
-        def additional_input_options
-          super.merge(checked: !!input_value)
+          {
+            as: :check_boxes,
+            collection: collection
+          }
         end
       end
     end
   end
 end
-

@@ -1,4 +1,5 @@
 require 'filter_form/input_options/base'
+require 'filter_form/input_options/shared/with_associations'
 
 require 'filter_form/input_options/select/base'
 
@@ -7,6 +8,8 @@ require 'filter_form/input_options/string/date'
 
 require 'filter_form/input_options/number/base'
 require 'filter_form/input_options/number/money'
+
+require 'filter_form/input_options/boolean/base'
 
 require 'filter_form/input_options/checkbox/base'
 
@@ -51,6 +54,8 @@ module FilterForm
       when :select2
         'select/select2'
       when :boolean
+        'boolean/base'
+      when :check_boxes
         'checkbox/base'
       else
         _type

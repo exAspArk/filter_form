@@ -40,6 +40,7 @@ In your view file:
   <%= f.filter_input :city      # belongs_to %>
   <%= f.filter_input :parents   # has_many   %>
   <%= f.filter_input :amount    # money      %>
+  <%= f.filter_input :gender, as: :check_boxes, collection: [[:male, 'Male'], [:female, 'Female']]   # checkboxes    %>
   <%= f.button :submit %>
 <% end %>
 ```
@@ -58,6 +59,7 @@ In your view file:
      `datetime`      | `datetime`                                      | `eq`                  | `input[type="text"]`      |
      `select`        | `belongs_to`/`has_many`/`has_and_belongs_to_many` associations | `eq`   | `select`                  |
      `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type="number"]` |
+     `check_boxes`   | `any'                                           | `in`                  | `input[type=checkbox]`      |
 
 ### Customization
 

@@ -2,6 +2,8 @@ module FilterForm
   module InputOptions
     module Select
       class Base < FilterForm::InputOptions::Base
+        include FilterForm::InputOptions::Shared::WithAssociations
+
         DEFAULT_PREDICATE = :eq
 
         private
@@ -13,18 +15,6 @@ module FilterForm
             include_blank: true,
             selected:      input_value
           }
-        end
-
-        def collection
-          if options[:collection]
-            options[:collection]
-          elsif belongs_to?
-            attribute_name.to_s.camelize.constantize.all
-          elsif collection?
-            attribute_name.to_s.camelize.singularize.constantize.all
-          else
-            object.klass.uniq.pluck(attribute_name)
-          end
         end
 
         def input_attribute_name
@@ -41,18 +31,6 @@ module FilterForm
           else
             super
           end
-        end
-
-        def association
-          object.klass.reflections[attribute_name]
-        end
-
-        def belongs_to?
-          association && association.belongs_to?
-        end
-
-        def collection?
-          association && association.collection?
         end
       end
     end
