@@ -14,6 +14,7 @@ module FilterForm
       def default_options
         {
           required:   false,
+          label:      label,
           input_html: additional_input_options.merge(options.delete(:input_html) || {})
         }
       end
@@ -37,6 +38,14 @@ module FilterForm
         result[:data][:current_predicate]  = current_predicate            if current_predicate
 
         result
+      end
+
+      def label
+        if options[:predicate_selector]
+          attribute_name.to_s.titleize
+        else
+          "#{ attribute_name }_#{ Ransack::Translate.predicate(predicate) }".titleize
+        end
       end
 
       def current_predicate
