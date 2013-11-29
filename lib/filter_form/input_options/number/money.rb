@@ -10,6 +10,10 @@ module FilterForm
           end
         end
 
+        def input_name
+          "q[#{ attribute_name }_#{ predicate }]"
+        end
+
         def input_attribute_name
           "#{ attribute_name }_cents"
         end

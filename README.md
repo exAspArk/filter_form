@@ -82,6 +82,17 @@ You can show predicate selector:
 <% end %>
 ```
 
+#### Money
+
+To filter by monetized attribute please add your controller:
+
+```erb
+class ApplicationController < ActionController::Base
+  include FilterForm::MoneyConverter
+  ...
+end
+```
+
 #### Select2
 
 You can wrap your select in `select2`:
