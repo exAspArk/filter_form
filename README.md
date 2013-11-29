@@ -48,17 +48,18 @@ In your view file:
 
      Mapping         | Database Column Type                            | Default predicate     | Generated HTML Element    |
      --------------- |:------------------------------------------------|:----------------------|:--------------------------|
+     `boolean`       | `boolean`                                       | `true`                | `input[type=checkbox]`    |
      `string`        | `string`                                        | `cont`                | `input[type=text]`        |
      `text`          | `text`                                          | `cont`                | `input[type=text]`        |
      `integer`       | `integer`                                       | `eq`                  | `input[type=number]`      |
      `float`         | `float`                                         | `eq`                  | `input[type=number]`      |
      `decimal`       | `decimal`                                       | `eq`                  | `input[type=number]`      |
-     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=number]` |
-     `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
      `date`          | `date`                                          | `eq`                  | `input[type=text]`        |
+     `datetime`      | `datetime`                                      | `eq`                  | `input[type=text]`        |
+     `select`        | `select`                                        | `eq`                  | `select`                  |
      `belongs_to`    | `belongs_to` association                        | `eq`                  | `select`                  |
      `collection`    | `has_many` or `has_and_belongs_to_many` association | `eq`              | `select`                  |
-     `boolean`       | `boolean`                                       | `true`                | `input[type=checkbox]`    |
+     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type=number]` |
 
 ### Customization
 
@@ -84,7 +85,7 @@ You can show predicate selector:
 
 #### Money
 
-To filter by monetized attribute please add your controller:
+To filter by monetized attribute please add to your controller:
 
 ```erb
 class ApplicationController < ActionController::Base
