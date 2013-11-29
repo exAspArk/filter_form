@@ -15,7 +15,7 @@ module FilterForm
         money_attribute_name = money_column_name.dup.gsub('_cents', '')
         money_param_name = params[:q].keys.select { |c| c.start_with?(money_attribute_name) }.first
 
-        if money_param_name
+        if money_param_name && params[:q][money_param_name].present?
           params[:q][money_param_name.gsub(money_attribute_name, "#{ money_attribute_name }_cents")] = params[:q].delete(money_param_name).to_f * 100
         end
       end

@@ -87,7 +87,7 @@ You can show predicate selector:
 
 To filter by monetized attribute please add to your controller:
 
-```erb
+```ruby
 class ApplicationController < ActionController::Base
   include FilterForm::MoneyConverter
   ...
