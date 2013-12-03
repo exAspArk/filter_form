@@ -57,9 +57,9 @@ In your view file:
      `decimal`       | `decimal`                                       | `eq`                  | `input[type="number"]`    |
      `date`          | `date`                                          | `eq`                  | `input[type="text"]`      |
      `datetime`      | `datetime`                                      | `eq`                  | `input[type="text"]`      |
-     `select`        | `belongs_to`/`has_many`/`has_and_belongs_to_many` associations | `eq`   | `select`                  |
-     `money`         | `money` [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq` | `input[type="number"]` |
-     `check_boxes`   | `any'                                           | `in`                  | `input[type=checkbox]`      |
+     `select`        | `belongs_to`/`has_many`/`has_and_belongs_to_many` associations  | `eq`  | `select`                  |
+     `money`         | [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq`  | `input[type="number"]`    |
+     `check_boxes`   | `any'                                           | `in`                  | `input[type=checkbox]`    |
 
 ### Customization
 
