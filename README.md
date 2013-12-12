@@ -40,7 +40,7 @@ In your view file:
   <%= f.filter_input :city      # belongs_to %>
   <%= f.filter_input :parents   # has_many   %>
   <%= f.filter_input :amount    # money      %>
-  <%= f.filter_input :gender, as: :check_boxes, collection: [[:male, 'Male'], [:female, 'Female']]   # checkboxes    %>
+  <%= f.filter_input :gender, as: :check_boxes, collection: [[:male, 'Male'], [:female, 'Female']] # checkboxes %>
   <%= f.button :submit %>
 <% end %>
 ```
