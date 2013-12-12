@@ -44,10 +44,14 @@ module FilterForm
 
       def label
         if options[:predicate_selector]
-          attribute_name.to_s.titleize
+          human_attribute_name
         else
-          "#{ attribute_name }_#{ Ransack::Translate.predicate(predicate) }".titleize
+          "#{ human_attribute_name } #{ Ransack::Translate.predicate(predicate) }"
         end
+      end
+
+      def human_attribute_name
+        object.klass.human_attribute_name(attribute_name)
       end
 
       def current_predicate
