@@ -52,7 +52,7 @@ module FilterForm
 
       def human_attribute_name
         if association
-          association.class_name.constantize.model_name.human
+          association.klass.model_name.human
         else
           object.klass.human_attribute_name(attribute_name)
         end

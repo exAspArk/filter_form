@@ -6,7 +6,7 @@ module FilterForm
           if options[:collection]
             options[:collection]
           elsif association
-            association.class_name.constantize.all
+            association.klass.all
           else
             object.klass.uniq.pluck(attribute_name)
           end

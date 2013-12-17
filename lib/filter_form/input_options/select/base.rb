@@ -19,7 +19,7 @@ module FilterForm
 
         def input_attribute_name
           if association
-            "#{ attribute_name }_id"
+            association.foreign_key
           else
             super
           end
