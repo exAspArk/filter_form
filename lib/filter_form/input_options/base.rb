@@ -51,7 +51,15 @@ module FilterForm
       end
 
       def human_attribute_name
-        object.klass.human_attribute_name(attribute_name)
+        if association
+          association.class_name.constantize.model_name.human
+        else
+          object.klass.human_attribute_name(attribute_name)
+        end
+      end
+
+      def association
+        object.klass.reflections[attribute_name]
       end
 
       def current_predicate

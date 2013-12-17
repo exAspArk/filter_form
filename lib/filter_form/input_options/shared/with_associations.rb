@@ -11,10 +11,6 @@ module FilterForm
             object.klass.uniq.pluck(attribute_name)
           end
         end
-
-        def association
-          object.klass.reflections[attribute_name]
-        end
       end
     end
   end
