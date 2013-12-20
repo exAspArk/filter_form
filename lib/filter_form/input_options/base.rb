@@ -26,7 +26,7 @@ module FilterForm
       end
 
       def additional_input_options
-        result = { name: input_name, data: {} }
+        result = { name: input_name }
 
         if input_class
           if options[:input_html]
@@ -36,8 +36,13 @@ module FilterForm
           end
         end
 
-        result[:data][:predicate_selector] = options[:predicate_selector] if options[:predicate_selector]
-        result[:data][:current_predicate]  = current_predicate            if current_predicate
+        if options[:predicate_selector]
+          result.merge!(data: { predicate_selector: options[:predicate_selector] })
+        end
+
+        if current_predicate
+          result.merge!(data: { current_predicate: current_predicate })
+        end
 
         result
       end

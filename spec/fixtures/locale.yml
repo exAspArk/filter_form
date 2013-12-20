@@ -1,0 +1,7 @@
+activerecord:
+  attributes:
+    users:
+      married: "MARRIED"
+ransack:
+  predicates:
+    'true': "IS TRUE"
