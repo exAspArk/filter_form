@@ -1,4 +1,4 @@
-# FilterForm
+# FilterForm [![Build Status](https://travis-ci.org/exAspArk/filter_form.png)](https://travis-ci.org/exAspArk/filter_form)
 
 Build filter forms easily by using `ransack` and `simple_form`.
 
