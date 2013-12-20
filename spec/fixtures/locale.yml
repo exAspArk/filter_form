@@ -3,7 +3,10 @@ activerecord:
     user:
       married: "MARRIED"
       name: "NAME"
+      about: "ABOUT"
+      amount: "AMOUNT"
 ransack:
   predicates:
     'true': "IS TRUE"
     cont: "CONTAINS"
+    eq: "EQUALS"
