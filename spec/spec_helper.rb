@@ -1,7 +1,6 @@
 require 'rails'
 require 'action_view'
 require 'active_model'
-require 'database_cleaner'
 
 require 'support/active_record'
 

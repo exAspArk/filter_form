@@ -14,8 +14,23 @@ describe FilterForm::InputOptionsBuilder do
 
     context 'default predicate' do
       it 'returns correct options with predicate "true"' do
-        result  = builder.build({})
-        options = { as: :boolean, required: false, label: 'Married IS TRUE', input_html: { name: 'q[married_true]', checked: false } }
+        result  = builder.build
+        options = { as: :boolean, required: false, label: 'MARRIED IS TRUE', input_html: { name: 'q[married_true]', checked: false } }
+
+        expect(result).to eq(options)
+      end
+    end
+  end
+
+  context 'string' do
+    before do
+      builder.attribute_name = :name
+    end
+
+    context 'default predicate' do
+      it 'returns correct options with predicate "cont"' do
+        result  = builder.build
+        options = { as: :string, required: false, label: 'NAME CONTAINS', input_html: { name: 'q[name_cont]' } }
 
         expect(result).to eq(options)
       end

@@ -19,7 +19,7 @@ module FilterForm
 
     attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
 
-    def build(options)
+    def build(options = {})
       input_options_class.new(attribute_name: attribute_name, object: object, custom_predicate: custom_predicate, options: options).simple_form_options
     end
 

@@ -1,7 +1,9 @@
 activerecord:
   attributes:
-    users:
+    user:
       married: "MARRIED"
+      name: "NAME"
 ransack:
   predicates:
     'true': "IS TRUE"
+    cont: "CONTAINS"

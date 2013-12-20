@@ -11,7 +11,11 @@ module FilterForm
         end
 
         def additional_input_options
-          super.merge(value: input_value)
+          if input_value
+            super.merge(value: input_value)
+          else
+            super
+          end
         end
       end
     end
