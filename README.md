@@ -60,6 +60,7 @@ In your view file:
      `select`        | `belongs_to`/`has_many`/`has_and_belongs_to_many` associations  | `eq`  | `select`                  |
      `money`         | [monetized](https://github.com/RubyMoney/money-rails) attribute | `eq`  | `input[type="number"]`    |
      `check_boxes`   | `any'                                           | `in`                  | `input[type=checkbox]`    |
+     `radio_buttons` | `any'                                           | `eq`                  | `input[type=radio]`       |
 
 ### Customization
 

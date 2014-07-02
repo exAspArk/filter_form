@@ -13,6 +13,8 @@ require 'filter_form/input_options/boolean/base'
 
 require 'filter_form/input_options/checkbox/base'
 
+require 'filter_form/input_options/radio_buttons/base'
+
 module FilterForm
   class InputOptionsBuilder
     attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
