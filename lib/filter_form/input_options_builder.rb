@@ -1,19 +1,14 @@
 require 'filter_form/input_options/base'
 require 'filter_form/input_options/shared/with_associations'
-
 require 'filter_form/input_options/select/base'
-
 require 'filter_form/input_options/string/base'
-require 'filter_form/input_options/string/date'
-
 require 'filter_form/input_options/number/base'
 require 'filter_form/input_options/number/money'
-
 require 'filter_form/input_options/boolean/base'
-
 require 'filter_form/input_options/checkbox/base'
-
 require 'filter_form/input_options/radio_buttons/base'
+require 'filter_form/input_options/date/base'
+require 'filter_form/input_options/datetime/base'
 
 module FilterForm
   class InputOptionsBuilder
@@ -53,8 +48,6 @@ module FilterForm
       case _type
       when :text
         'string/base'
-      when :datetime, :date
-        'string/date'
       when :integer, :float, :decimal
         'number/base'
       when :money
