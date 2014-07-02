@@ -1,11 +1,16 @@
 module FilterForm
   module InputOptions
     class Base
-      include ActiveModel::Model
-
       DEFAULT_PREDICATE = nil
 
       attr_accessor :attribute_name, :object, :custom_predicate, :options
+
+      def initialize(options)
+        @attribute_name = options[:attribute_name]
+        @object = options[:object]
+        @custom_predicate = options[:custom_predicate]
+        @options = options[:options]
+      end
 
       def simple_form_options
         default_options.merge(additional_options).merge(options)

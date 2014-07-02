@@ -7,7 +7,7 @@ require 'support/active_record'
 require 'filter_form'
 
 RSpec.configure do |config|
-  config.color_enabled = true
+  config.color = true
   config.tty = true
   config.order = :random
 end

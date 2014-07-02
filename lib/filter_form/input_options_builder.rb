@@ -15,9 +15,15 @@ require 'filter_form/input_options/checkbox/base'
 
 module FilterForm
   class InputOptionsBuilder
-    include ActiveModel::Model
-
     attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
+
+    def initialize(options)
+      @attribute_name = options[:attribute_name]
+      @object = options[:object]
+      @custom_predicate = options[:custom_predicate]
+      @custom_type = options[:custom_type]
+    end
+
 
     def build(options = {})
       input_options_class.new(attribute_name: attribute_name, object: object, custom_predicate: custom_predicate, options: options).simple_form_options
