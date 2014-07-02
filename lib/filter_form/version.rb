@@ -1,3 +1,3 @@
 module FilterForm
-  VERSION = '0.7.9'
+  VERSION = '0.7.11'
 end

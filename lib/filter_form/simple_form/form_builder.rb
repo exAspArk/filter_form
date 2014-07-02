@@ -1,3 +1,7 @@
+require 'simple_form/components'
+require 'simple_form/helpers'
+require 'simple_form/inputs'
+require 'simple_form/form_builder'
 require 'filter_form/input_options_builder'
 
 module SimpleForm
