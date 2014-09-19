@@ -2,6 +2,7 @@ module FilterForm
   module InputOptions
     class Base
       DEFAULT_PREDICATE = nil
+      PREDICATE_IN = :in
 
       attr_accessor :attribute_name, :object, :custom_predicate, :options
 
@@ -84,8 +85,14 @@ module FilterForm
         nil
       end
 
+      def multiple?
+        options[:input_html].try(:[], :multiple)
+      end
+
       def input_name
-        "q[#{ input_attribute_name }_#{ predicate }]"
+        result = "q[#{ input_attribute_name }_#{ predicate }]"
+        result << "[]" if multiple?
+        result
       end
 
       def input_value
@@ -106,8 +113,12 @@ module FilterForm
         attribute_name
       end
 
+      def default_predicate
+        multiple? ? PREDICATE_IN : self.class::DEFAULT_PREDICATE
+      end
+
       def predicate
-        custom_predicate || self.class::DEFAULT_PREDICATE
+        custom_predicate || default_predicate
       end
     end
   end

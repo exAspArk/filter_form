@@ -10,3 +10,4 @@ ransack:
     'true': "IS TRUE"
     cont: "CONTAINS"
     eq: "EQUALS"
+    in: "IN"

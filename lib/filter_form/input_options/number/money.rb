@@ -11,7 +11,9 @@ module FilterForm
         end
 
         def input_name
-          "q[#{ attribute_name }_#{ predicate }]"
+          result = "q[#{ attribute_name }_#{ predicate }]"
+          result << "[]" if multiple?
+          result
         end
 
         def input_attribute_name

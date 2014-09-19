@@ -22,15 +22,20 @@ describe FilterForm::InputOptionsBuilder do
   end
 
   context 'string' do
-    before do
-      builder.attribute_name = :name
-    end
-
     context 'default predicate' do
       it 'returns correct options with predicate "cont"' do
-        result  = builder.build
-        options = { as: :string, required: false, label: 'NAME CONTAINS', input_html: { name: 'q[name_cont]' } }
-        expect(result).to eq(options)
+        builder.attribute_name = :name
+
+        expect(builder.build).to eq({ as: :string, required: false, label: 'NAME CONTAINS', input_html: { name: 'q[name_cont]' } })
+      end
+    end
+
+    context "multiple" do
+      it "returns attribute name as array with default predicate 'in'" do
+        builder.attribute_name = :name
+        result = builder.build(input_html: { multiple: true })
+
+        expect(result).to eq({ as: :string, required: false, label: "NAME IN", input_html: { name: "q[name_in][]", multiple: true } })
       end
     end
   end

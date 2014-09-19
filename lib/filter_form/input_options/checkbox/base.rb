@@ -4,9 +4,11 @@ module FilterForm
       class Base < FilterForm::InputOptions::Base
         include FilterForm::InputOptions::Shared::WithAssociations
 
-        DEFAULT_PREDICATE = :in
-
         private
+
+        def default_predicate
+          PREDICATE_IN
+        end
 
         def additional_options
           {
