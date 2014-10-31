@@ -67,4 +67,16 @@ describe FilterForm::InputOptionsBuilder do
       end
     end
   end
+
+  context 'predicate selector' do
+    before do
+      builder.attribute_name = :amount
+    end
+
+    it 'options do not replace each other' do
+      result  = builder.build(predicate_selector: [['>', 'gt']])
+      expect(result[:input_html].keys).to include :'data-predicate-selector', :'data-current-predicate'
+    end
+  end
+
 end
