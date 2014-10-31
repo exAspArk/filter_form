@@ -48,7 +48,9 @@ $ ->
   for element in $("[#{ PredicateSelector.element_for_attribute() }]")
     new PredicateSelector(element)
 
-  $('.filter_form_select2').select2()
+  if $('.filter_form_select2').select2
+    $('.filter_form_select2').select2()
 
-  $('.filter_form_date').datepicker
-    dateFormat: 'yy-mm-dd'
+  if $('.filter_form_date').datepicker
+    $('.filter_form_date').datepicker
+      dateFormat: 'yy-mm-dd'

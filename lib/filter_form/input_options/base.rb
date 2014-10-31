@@ -43,11 +43,11 @@ module FilterForm
         end
 
         if options[:predicate_selector]
-          result.merge!(data: { predicate_selector: options[:predicate_selector] })
+          result.deep_merge!(data: { predicate_selector: options[:predicate_selector] })
         end
 
         if current_predicate
-          result.merge!(data: { current_predicate: current_predicate })
+          result.deep_merge!(data: { current_predicate: current_predicate })
         end
 
         result
