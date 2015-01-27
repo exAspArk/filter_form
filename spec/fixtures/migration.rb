@@ -9,3 +9,8 @@ ActiveRecord::Migration.create_table :users do |t|
   t.integer :city_id
   t.string  :gender
 end
+
+ActiveRecord::Migration.create_table :dog do |t|
+  t.string  :name
+  t.integer :user_id
+end

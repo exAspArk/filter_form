@@ -69,7 +69,11 @@ module FilterForm
     end
 
     def association?
-      !!object.klass.reflections[attribute_name]
+      if ActiveRecord.try(:version).to_s.to_f >= 4.2
+        !!object.klass.reflections[attribute_name]
+      else
+        !!object.klass.reflections[attribute_name.to_sym]
+      end
     end
 
     def money?

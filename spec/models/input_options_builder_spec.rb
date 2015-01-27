@@ -1,11 +1,26 @@
 require 'spec_helper'
 
 class User < ActiveRecord::Base
+  has_one :dog
+end
+
+class Dog < ActiveRecord::Base
 end
 
 describe FilterForm::InputOptionsBuilder do
   let(:search)  { User.search }
   let(:builder) { FilterForm::InputOptionsBuilder.new(object: search) }
+
+  context 'association' do
+    it 'returns correct options with predicate "select"' do
+      builder.attribute_name = :dog
+
+      result = builder.build
+
+      expected_result = { as: :select, required: false, label: 'Dog EQUALS', input_html: { name: 'q[user_id_eq]' }, include_blank: true, selected: nil }
+      expect(result.except(:collection)).to eq(expected_result)
+    end
+  end
 
   context 'boolean' do
     context 'default predicate' do
