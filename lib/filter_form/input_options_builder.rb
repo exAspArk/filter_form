@@ -12,18 +12,23 @@ require 'filter_form/input_options/datetime/base'
 
 module FilterForm
   class InputOptionsBuilder
-    attr_accessor :attribute_name, :object, :custom_predicate, :custom_type
+    attr_accessor :object, :custom_predicate, :custom_type
+    attr_reader :attribute_name
 
     def initialize(options)
-      @attribute_name = options[:attribute_name]
       @object = options[:object]
       @custom_predicate = options[:custom_predicate]
       @custom_type = options[:custom_type]
+      self.attribute_name = options[:attribute_name]
     end
 
 
     def build(options = {})
       input_options_class.new(attribute_name: attribute_name, object: object, custom_predicate: custom_predicate, options: options).simple_form_options
+    end
+
+    def attribute_name=(new_attribute_name)
+      @attribute_name = new_attribute_name.to_s
     end
 
   private
@@ -77,7 +82,7 @@ module FilterForm
       elsif money?
         :money
       else
-        object.klass.columns_hash[attribute_name.to_s].type
+        object.klass.columns_hash[attribute_name].type
       end
     end
   end

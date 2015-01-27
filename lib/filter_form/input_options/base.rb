@@ -101,10 +101,10 @@ module FilterForm
 
       def object_condition
         if options[:predicate_selector]
-          object.base.conditions.select { |condition| condition.a.first.name == input_attribute_name.to_s }.first
+          object.base.conditions.select { |condition| condition.a.first.name == input_attribute_name }.first
         else
           object.base.conditions.select do |condition|
-            condition.a.first.name == input_attribute_name.to_s && condition.predicate.name == predicate.to_s
+            condition.a.first.name == input_attribute_name && condition.predicate.name == predicate.to_s
           end.first
         end
       end

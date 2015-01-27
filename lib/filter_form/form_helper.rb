@@ -7,6 +7,12 @@ module FilterForm
         html:   { class: 'filter_form', novalidate: true }
       })
 
+      record.instance_eval do
+        def model_name
+          klass.model_name
+        end
+      end
+
       simple_form_for(record, options, &block)
     end
   end
